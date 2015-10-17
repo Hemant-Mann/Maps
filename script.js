@@ -16,19 +16,34 @@
 	});
 	// similarly we can add more events
 
-	map.addMarker({
+	var marker1 = map.addMarker({
 		lat: 28.7499867,
 		lng: 77.11831370000004,
 		visible: true,
 		draggable: true,
 		id: 1,
-		evt: {
-			name: 'click',
-			callback: function () {
-				alert('Marker is clicked');
-			}
-		}
+		// evt: {
+		// 	name: 'click',
+		// 	callback: function () {
+		// 		alert('Marker is clicked'); do something
+		// 	}
+		// },
+		content: 'This is my college DTU'
 		// icon: 'http://path.to.map.icon'
 	});
+
+	var marker2 = map.addMarker({
+		lat: 28.5471,
+		lng: 77.2040,
+		visible: true,
+		draggable: true,
+		id: 2,
+		content: 'Hauz Khas Village'
+	});
+	// console.log(map.markers);
+
+	// we get the marker we are looking for
+	var found = map.findMarkerByLat(28.7499867);
+	console.log(found);
 	
 }(window, window.Mapster || (window.Mapster = {})));

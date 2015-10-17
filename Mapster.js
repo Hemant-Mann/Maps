@@ -2,6 +2,7 @@
 	var Mapster = (function (){
 		function Mapster(element, opts) {
 			this.gMap = new google.maps.Map(element, opts);
+			this.markers = [];
 		}
 
 		Mapster.prototype = {
@@ -25,6 +26,7 @@
 					lng: opts.lng
 				};
 				marker = this._createMarker(opts);
+				this._addMarker(marker);
 
 				if (opts.evt) {
 					this._on({
@@ -32,6 +34,38 @@
 						event: opts.evt.name,
 						callback: opts.evt.callback
 					});
+				}
+				if (opts.content) {
+					this._on({
+						obj: marker,
+						event: 'click',
+						callback: function () {
+							var infoWindow = new google.maps.InfoWindow({
+								content: opts.content
+							});
+
+							infoWindow.open(this.gMap, marker);
+						}
+					});
+				}
+				return marker;
+			},
+			_addMarker: function (marker) {
+				this.markers.push(marker);
+			},
+			_removeMarker: function (marker) {
+				var indexOf = this.markers.indexOf(marker);
+				if (indexOf !== -1) {
+					this.markers.splice(indexOf, 1);
+					marker.setMap(null);
+				}
+			},
+			findMarkerByLat: function (lat) {
+				for (var i = 0; i < this.markers.length; ++i) {
+					var marker = this.markers[i];
+					if (marker.position.lat() === lat) {
+						return marker;
+					}
 				}
 			},
 			_createMarker: function (opts) {
