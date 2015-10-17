@@ -20,7 +20,17 @@
 			_on: function (opts) {
 				var self = this;
 				google.maps.event.addListener(opts.obj, opts.event, function (e) {
-					opts.callback.call(self, e);
+					opts.callback.call(self, e, opts.obj);
+				});
+			},
+			_attachEvents: function (obj, events) {
+				var self = this;
+				events.forEach(function (event) {
+					self._on({
+						obj: obj,
+						event: event.name,
+						callback: event.callback
+					});
 				});
 			},
 			addMarker: function (opts) {
@@ -35,12 +45,8 @@
 				}
 				this.markers.add(marker);
 
-				if (opts.evt) {
-					this._on({
-						obj: marker,
-						event: opts.evt.name,
-						callback: opts.evt.callback
-					});
+				if (opts.events) {
+					this._attachEvents(marker, opts.events);
 				}
 				if (opts.content) {
 					this._on({

@@ -22,11 +22,17 @@
 		visible: true,
 		draggable: true,
 		id: 1,
-		// evt: {
-		// 	name: 'click',
-		// 	callback: function () {
-		// 		alert('Marker is clicked'); do something
-		// 	}
+		events: [{
+			name: 'click',
+			callback: function (e, marker) {
+				console.log(e, marker);
+			}
+		}, {
+			name: 'dragend',
+			callback: function () {
+				alert('Marker was dragged to a new locaation');
+			}
+		}],
 		// },
 		content: 'This is my college DTU'
 		// icon: 'http://path.to.map.icon'
@@ -43,7 +49,8 @@
 	// 	console.log(marker);
 	// 	return marker.id === 2;
 	// });
-
+	
+	/****** Code for Adding Multiple Random Markers *********
 	for (var i = 0; i < 40; ++i) {
 		var id = i + 1;
 		map.addMarker({
@@ -59,6 +66,6 @@
 			lng: 77.2040 + Math.random(),
 			content: 'This is Marker no: ' + id
 		});		
-	}
+	}*/
 	
 }(window, window.Mapster || (window.Mapster = {})));
