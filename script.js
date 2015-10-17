@@ -1,13 +1,7 @@
-(function (window, google) {
+(function (window, google, mapster) {
 	// map options
-	var options = {
-		center: {
-			lat: 21,
-			lng: 78
-		},
-		zoom: 10
-	},
+	var options = mapster.MAP_OPTIONS
 	element = document.getElementById('map-canvas'),
 
 	map = new google.maps.Map(element, options);
-}(window, google));
+}(window, google, window.Mapster || (window.Mapster = {})));
