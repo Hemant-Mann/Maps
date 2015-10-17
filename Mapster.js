@@ -75,6 +75,7 @@
 						} else {
 							marker.setMap(null);
 						}
+						self.markers.remove(marker);
 					});
 				});
 			},
