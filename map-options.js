@@ -1,16 +1,14 @@
 (function (window, google, mapster) {
 	mapster.MAP_OPTIONS = {
 		center: {
-			lat: 21,
-			lng: 78
+			lat: 28.61,
+			lng: 77.23
 		},
 		zoom: 10,
 		disableDefaultUI: false,
 		scrollwheel: true,
 		draggable: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		maxZoom: 11,
-		minZoom: 9,
 		zoomControlOptions: {
 			position: google.maps.ControlPosition.LEFT_BOTTOM,
 			style: google.maps.ZoomControlStyle.DEFAULT
