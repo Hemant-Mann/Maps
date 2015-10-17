@@ -43,7 +43,13 @@
 	// console.log(map.markers);
 
 	// we get the marker we are looking for
-	var found = map.findMarkerByLat(28.7499867);
+	var found = map.findBy(function (marker) {
+		return marker.id === 2;
+	});
 	console.log(found);
+
+	map.removeBy(function (marker) {
+		return marker.id === 2;
+	});
 	
 }(window, window.Mapster || (window.Mapster = {})));
