@@ -15,6 +15,12 @@
 		},
 		panControlOptions: {
 			position: google.maps.ControlPosition.LEFT_BOTTOM
+		},
+		cluster: {
+			options: {
+				// style: [{
+				// }]
+			}
 		}
 	};
 

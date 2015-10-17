@@ -31,25 +31,34 @@
 		content: 'This is my college DTU'
 		// icon: 'http://path.to.map.icon'
 	});
-
-	var marker2 = map.addMarker({
-		lat: 28.5471,
-		lng: 77.2040,
-		visible: true,
-		draggable: true,
-		id: 2,
-		content: 'Hauz Khas Village'
-	});
 	// console.log(map.markers);
 
 	// we get the marker we are looking for
-	var found = map.findBy(function (marker) {
-		return marker.id === 2;
-	});
-	console.log(found);
+	// var found = map.findBy(function (marker) {
+	// 	return marker.id === 2;
+	// });
+	// console.log(found);
 
-	map.removeBy(function (marker) {
-		return marker.id === 2;
-	});
+	// map.removeBy(function (marker) {
+	// 	console.log(marker);
+	// 	return marker.id === 2;
+	// });
+
+	for (var i = 0; i < 40; ++i) {
+		var id = i + 1;
+		map.addMarker({
+			id: id,
+			lat: 28.7499867 + Math.random(),
+			lng: 77.11831370000004 + Math.random(),
+			content: 'This is Marker no: ' + id
+		});
+
+		var marker = map.addMarker({
+			id: id,
+			lat: 28.5471 + Math.random(),
+			lng: 77.2040 + Math.random(),
+			content: 'This is Marker no: ' + id
+		});		
+	}
 	
 }(window, window.Mapster || (window.Mapster = {})));
