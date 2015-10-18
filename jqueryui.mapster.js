@@ -58,6 +58,10 @@
 			
 		},
 
+		getCurrentPosition: function (callback) {
+			this.map.getCurrentPosition(callback);
+		},
+
 		// events bound via _on are removed automatically
 		// revert other modifications here
 		_destroy: function () {

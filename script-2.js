@@ -5,7 +5,7 @@
 	/***** Adding a marker on map through geocoding *******/	
 	$mapster.mapster('addMarker', {
 		id: 1,
-		location: 'DTU, New Delhi'
+		location: 'Rohini, New Delhi'
 	});
 
 	/***** Adding a marker on map through lat, lng *******/
@@ -54,6 +54,12 @@
 		}]
 	});
 
+	$mapster.mapster('getCurrentPosition', function (position) {
+		$mapster.mapster('addMarker', {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		});
+	});
 
 	console.log($mapster.mapster('markers'));
 }(window, jQuery));

@@ -45,6 +45,13 @@
 					}
 				});
 			},
+			getCurrentPosition: function (callback) {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function (position) {
+						callback.call(this, position);
+					});
+				}
+			},
 			_attachEvents: function (obj, events) {
 				var self = this;
 				events.forEach(function (event) {
