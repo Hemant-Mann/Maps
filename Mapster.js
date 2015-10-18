@@ -6,6 +6,10 @@
 			if (opts.cluster) {
 				this.markerClusterer = new MarkerClusterer(this.gMap, [], opts.cluster.options);	
 			}
+
+			if (opts.geocoder) {
+				this.geocoder = new google.maps.Geocoder();
+			}
 			
 		}
 
@@ -29,6 +33,17 @@
 					this._attachEvents(panorama, opts.events);
 				}
 				this.gMap.setStreetView(panorama);
+			},
+			geocode: function (opts) {
+				this.geocoder.geocode({
+					address: opts.address
+				}, function (result, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						opts.success.call(this, result, status);
+					} else {
+						opts.error.call(this, status);
+					}
+				});
 			},
 			_attachEvents: function (obj, events) {
 				var self = this;

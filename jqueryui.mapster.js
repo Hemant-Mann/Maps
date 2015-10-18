@@ -17,7 +17,24 @@
 		},
 
 		addMarker: function (opts) {
-			return this.map.addMarker(opts);
+			var self = this;
+			if (opts.location) {
+				this.map.geocode({
+					address: opts.location,
+					success: function (results) {
+						results.forEach(function (result) {
+							opts.lat = result.geometry.location.lat();
+							opts.lng = result.geometry.location.lng();
+							self.map.addMarker(opts);
+						});
+					},
+					error: function () {
+
+					}
+				});
+			} else {
+				return this.map.addMarker(opts);
+			}
 		},
 
 		findMarkers: function (callback) {

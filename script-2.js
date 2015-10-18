@@ -1,13 +1,14 @@
 (function (window, $) {
+	/******* Initializing the Map ******/
 	var $mapster = $('#map-canvas').mapster(Mapster.MAP_OPTIONS);
 
+	/***** Adding a marker on map through geocoding *******/	
 	$mapster.mapster('addMarker', {
 		id: 1,
-		lat: 28.7499867,
-		lng: 77.11831370000004,
-		content: 'Delhi Technological University'
+		location: 'DTU, New Delhi'
 	});
 
+	/***** Adding a marker on map through lat, lng *******/
 	$mapster.mapster('addMarker', {
 		id: 2,
 		lat: 28.5471,
@@ -16,6 +17,7 @@
 		draggable: true,
 	});
 
+	/***** Finding markers on the map *******/
 	var matches = $mapster.mapster('findMarkers', function (marker) {
 		return marker.id === 1;
 	});
@@ -24,6 +26,7 @@
 	// 	return marker.id === 1;
 	// });
 	
+	/**** Setting a Panorama on map *****/
 	$mapster.mapster('setPano', '#pip-pano', {
 		position: {
 			lat: 28.749473598668043,
@@ -50,5 +53,7 @@
 			}
 		}]
 	});
+
+
 	console.log($mapster.mapster('markers'));
 }(window, jQuery));

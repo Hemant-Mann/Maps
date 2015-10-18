@@ -21,7 +21,8 @@
 				// style: [{
 				// }]
 			}
-		}
+		},
+		geocoder: true
 	};
 
 }(window, google, window.Mapster || (window.Mapster = {})));
