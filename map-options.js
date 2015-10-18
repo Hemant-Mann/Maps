@@ -1,4 +1,19 @@
 (function (window, google, mapster) {
+
+	var styles = [{
+		featureType: 'water',
+		elementType: 'geometry',
+		stylers: [
+			{color: '#3498db'}
+		]
+	}, {
+		featureType: 'road.highway',
+		elementType: 'geometry',
+		stylers: [
+			{color: '#34495e'}
+		]
+	}];
+
 	mapster.MAP_OPTIONS = {
 		center: {
 			lat: 28.7,
@@ -22,7 +37,8 @@
 				// }]
 			}
 		},
-		geocoder: true
+		geocoder: true,
+		styles: styles
 	};
 
 }(window, google, window.Mapster || (window.Mapster = {})));
