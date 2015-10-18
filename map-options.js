@@ -1,8 +1,8 @@
 (function (window, google, mapster) {
 	mapster.MAP_OPTIONS = {
 		center: {
-			lat: 28.61,
-			lng: 77.23
+			lat: 28.7,
+			lng: 77
 		},
 		zoom: 10,
 		disableDefaultUI: false,
